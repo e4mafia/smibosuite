@@ -1,7 +1,7 @@
 {
-  "id": "manual-initiative-editor",
-  "title": "Manual Initiative Editor",
-  "description": "Type in initiative by hand in the Combat Tracker, and show a large, zoom-independent ruler distance readout.",
+  "id": "smibosuite",
+  "title": "Smibosuite",
+  "description": "A small suite of Foundry VTT quality-of-life tools: type in initiative by hand in the Combat Tracker, and show a large, zoom-independent ruler distance readout.",
   "version": "1.1.0",
   "authors": [
     {
@@ -13,16 +13,16 @@
     "verified": "13"
   },
   "esmodules": [
-    "scripts/manual-initiative-editor.js",
+    "scripts/initiative-editor.js",
     "scripts/ruler-readout.js"
   ],
   "styles": [
-    "styles/manual-initiative-editor.css"
+    "styles/smibosuite.css"
   ],
-  "url": "https://github.com/e4mafia/manual-initiative-editor",
-  "manifest": "https://raw.githubusercontent.com/e4mafia/manual-initiative-editor/main/module.json",
-  "download": "https://github.com/e4mafia/manual-initiative-editor/archive/refs/heads/main.zip",
-  "bugs": "https://github.com/e4mafia/manual-initiative-editor/issues",
-  "readme": "https://github.com/e4mafia/manual-initiative-editor/blob/main/README.md",
-  "license": "https://github.com/e4mafia/manual-initiative-editor/blob/main/LICENSE"
+  "url": "https://github.com/e4mafia/smibosuite",
+  "manifest": "https://raw.githubusercontent.com/e4mafia/smibosuite/main/module.json",
+  "download": "https://github.com/e4mafia/smibosuite/archive/refs/heads/main.zip",
+  "bugs": "https://github.com/e4mafia/smibosuite/issues",
+  "readme": "https://github.com/e4mafia/smibosuite/blob/main/README.md",
+  "license": "https://github.com/e4mafia/smibosuite/blob/main/LICENSE"
 }

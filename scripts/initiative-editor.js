@@ -1,6 +1,6 @@
 /**
- * Manual Initiative Editor
- * ------------------------
+ * Initiative Editor
+ * ------------------
  * Double-click a combatant's initiative value in the Combat Tracker to
  * replace it with a number input, type a new value, and press Enter
  * (or click away) to save it.
@@ -19,7 +19,7 @@
  * and the actor sheet stealing focus mid-edit.
  */
 
-const MODULE_ID = "manual-initiative-editor";
+const MODULE_ID = "smibosuite";
 
 /** Only the read-only initiative display; core's own editable input is left untouched. */
 const INITIATIVE_SELECTOR = ".token-initiative > span";
@@ -83,7 +83,7 @@ async function onDoubleClick(event, app) {
   input.type = "number";
   input.step = "any";
   input.value = currentValue;
-  input.classList.add("manual-initiative-input");
+  input.classList.add("smibosuite-initiative-input");
 
   target.innerHTML = "";
   target.appendChild(input);

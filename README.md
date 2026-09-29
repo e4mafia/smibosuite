@@ -1,7 +1,11 @@
-# Manual Initiative Editor
+# Smibosuite
 
-A tiny Foundry VTT (v13) module: double-click a combatant's initiative
-value in the Combat Tracker to type in a new number by hand.
+A small suite of Foundry VTT (v13+) quality-of-life tools:
+
+- **Initiative Editor** — double-click a combatant's initiative value in
+  the Combat Tracker to type in a new number by hand.
+- **Ruler Readout** — shows the ruler's distance in a large, fixed-size
+  readout that doesn't shrink when you zoom out, unlike core's label.
 
 ## Installation
 
@@ -9,28 +13,28 @@ value in the Combat Tracker to type in a new number by hand.
 
 1. In Foundry, go to **Add-on Modules → Install Module**.
 2. Paste this into the Manifest URL field:
-   `https://raw.githubusercontent.com/e4mafia/manual-initiative-editor/main/module.json`
-3. Click **Install**, then enable **Manual Initiative Editor** in your World's
+   `https://raw.githubusercontent.com/e4mafia/smibosuite/main/module.json`
+3. Click **Install**, then enable **Smibosuite** in your World's
    **Manage Modules** settings.
 
 ### Option B — manual install
 
 1. Download/unzip this folder so it becomes:
-   `<FoundryData>/Data/modules/manual-initiative-editor/`
+   `<FoundryData>/Data/modules/smibosuite/`
    (it must contain `module.json` directly inside that folder).
 2. Restart Foundry (or reload the Setup page) so it picks up the new module.
 3. In your World, go to **Settings → Manage Modules**, enable
-   **Manual Initiative Editor**, and save.
+   **Smibosuite**, and save.
 
 ## Publishing this to your own GitHub (e4mafia)
 
 No GitHub Release needed — `module.json`'s `download` field points at
 GitHub's auto-generated branch archive:
-`https://github.com/e4mafia/manual-initiative-editor/archive/refs/heads/main.zip`
+`https://github.com/e4mafia/smibosuite/archive/refs/heads/main.zip`
 GitHub builds that zip on the fly from whatever is currently on `main`, so
 it's always available with zero extra steps.
 
-1. Create a new repo, e.g. `manual-initiative-editor`, under your account.
+1. Create a new repo, e.g. `smibosuite`, under your account.
 2. Push the contents of this folder to the `main` branch, keeping the
    layout intact: `module.json` at the repo root, JS in `scripts/`, CSS in
    `styles/`.
@@ -41,6 +45,8 @@ it's always available with zero extra steps.
 
 ## Usage
 
+### Initiative Editor
+
 - Open the Combat Tracker with an active encounter.
 - If every combatant's initiative is a whole number, Foundry (v13+) already
   shows it as an editable text box — just click in and type, no need for
@@ -50,6 +56,16 @@ it's always available with zero extra steps.
   read-only text for everyone. As the GM, double-click that number to turn
   it into an editable box, type the new value, and press **Enter** (or
   click elsewhere) to save it, or **Esc** to cancel.
+- Typing a plain whole number keeps whatever decimal portion the
+  initiative already had (e.g. `15.37` → type `20` → `20.37`). Typing an
+  explicit decimal (e.g. `20.5`) overrides it exactly.
+
+### Ruler Readout
+
+- Use the measure tool, or drag a token, as normal.
+- A large, fixed-size readout of the total distance appears at the top of
+  the screen, staying readable no matter how far you're zoomed out. Core's
+  own (zoom-scaled) label is left untouched.
 
 ## Notes
 
@@ -57,7 +73,7 @@ it's always available with zero extra steps.
   normally managed).
 - This only changes how you *enter* a value manually — it doesn't touch
   dice rolling, turn order, or any other combat behavior.
-- Built against the Foundry v13/v14 Combat Tracker; it uses generic
-  selectors and should keep working if minor markup tweaks happen in later
-  point releases, but let me know if a specific system's custom tracker
-  doesn't pick it up.
+- Built against the Foundry v13/v14 Combat Tracker and Ruler; it uses
+  generic selectors and should keep working if minor markup tweaks happen
+  in later point releases, but let me know if a specific system's custom
+  tracker doesn't pick it up.

@@ -2,7 +2,7 @@
   cursor: pointer;
 }
 
-.manual-initiative-input {
+.smibosuite-initiative-input {
   width: 3.5em;
   text-align: center;
   font: inherit;
@@ -13,7 +13,7 @@
   padding: 0 2px;
 }
 
-#manual-initiative-editor-ruler-readout {
+#smibosuite-ruler-readout {
   position: fixed;
   top: 1rem;
   left: 50%;
@@ -30,6 +30,6 @@
   pointer-events: none;
 }
 
-#manual-initiative-editor-ruler-readout[hidden] {
+#smibosuite-ruler-readout[hidden] {
   display: none;
 }

@@ -10,7 +10,7 @@
  * Ruler class, so it works for both the measure tool and token drag rulers.
  */
 
-const READOUT_ID = "manual-initiative-editor-ruler-readout";
+const READOUT_ID = "smibosuite-ruler-readout";
 const MEASUREMENT_SELECTOR = "#hud #measurement";
 
 let observer = null;

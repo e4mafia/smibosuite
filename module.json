@@ -1,8 +1,8 @@
 {
   "id": "manual-initiative-editor",
   "title": "Manual Initiative Editor",
-  "description": "Double-click a combatant's initiative in the Combat Tracker to type in a new value by hand.",
-  "version": "1.0.1",
+  "description": "Type in initiative by hand in the Combat Tracker, and show a large, zoom-independent ruler distance readout.",
+  "version": "1.1.0",
   "authors": [
     {
       "name": "Custom"
@@ -10,10 +10,11 @@
   ],
   "compatibility": {
     "minimum": "13",
-    "verified": "14"
+    "verified": "13"
   },
   "esmodules": [
-    "scripts/manual-initiative-editor.js"
+    "scripts/manual-initiative-editor.js",
+    "scripts/ruler-readout.js"
   ],
   "styles": [
     "styles/manual-initiative-editor.css"

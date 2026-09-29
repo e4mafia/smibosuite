@@ -12,3 +12,24 @@
   border-radius: 3px;
   padding: 0 2px;
 }
+
+#manual-initiative-editor-ruler-readout {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  padding: 0.25em 0.75em;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+#manual-initiative-editor-ruler-readout[hidden] {
+  display: none;
+}

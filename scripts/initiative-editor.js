@@ -28,6 +28,8 @@ const INITIATIVE_SELECTOR = ".token-initiative > span";
 const COMBATANT_ROW_SELECTOR = "[data-combatant-id]";
 
 Hooks.on("renderCombatTracker", (app, html) => {
+  if (!game.settings.get(MODULE_ID, "enableInitiativeEditor")) return;
+
   // ApplicationV2 (v13+) passes a raw HTMLElement; the legacy Application
   // passes a jQuery object. Normalize to a plain element either way.
   const root = html instanceof HTMLElement ? html : html?.[0];

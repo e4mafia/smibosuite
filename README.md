@@ -11,6 +11,9 @@ A small suite of Foundry VTT (v13+) quality-of-life tools:
   zoom level too — with zero action required from players. Requires the
   [socketlib](https://foundryvtt.com/packages/socketlib) module.
 
+Each feature can be turned off independently — see
+[Settings](#settings) below.
+
 ## Installation
 
 ### Option A — via manifest URL (recommended once published on GitHub)
@@ -95,6 +98,15 @@ it's always available with zero extra steps.
   ```js
   game.modules.get("smibosuite").api.panAllTo(1200, 800, 1);
   ```
+
+## Settings
+
+In **Settings → Configure Settings**, under the SmiboSuite section, there's
+an on/off checkbox for each feature (Initiative Editor, Ruler Readout, Pan
+Players) — useful for diagnostics, e.g. to rule out whether a specific
+feature is the cause of some other conflict. These are world settings (set
+once for everyone, GM-only), and changing one prompts a reload to take
+effect.
 
 ## Notes
 

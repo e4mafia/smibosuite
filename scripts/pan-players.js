@@ -14,6 +14,10 @@
 const MODULE_ID = "smibosuite";
 const MODULE_DISPLAY_NAME = "SmiboSuite";
 
+function isEnabled() {
+  return game.settings.get(MODULE_ID, "enablePanPlayers");
+}
+
 let panSocket;
 
 function registerSocket() {
@@ -23,30 +27,36 @@ function registerSocket() {
   console.log(`${MODULE_ID} | socketlib registered for pan`);
 }
 
-// Normal path: socketlib fires this hook once it's ready.
-Hooks.once("socketlib.ready", registerSocket);
+// Settings are registered on "init" (see settings.js, which loads first),
+// so the setting is safe to read as soon as "init" fires here.
+Hooks.once("init", () => {
+  if (!isEnabled()) return;
 
-// Fallback path: if socketlib.ready already fired before this script
-// finished loading (a real race condition on some setups, especially
-// with CDN-served assets like Forge), poll for the global until it
-// shows up, then register directly instead of waiting on a hook that
-// already fired.
-if (typeof socketlib !== "undefined") {
-  registerSocket();
-} else {
-  let attempts = 0;
-  const maxAttempts = 50; // ~10 seconds at 200ms
-  const poll = setInterval(() => {
-    attempts++;
-    if (typeof socketlib !== "undefined") {
-      clearInterval(poll);
-      registerSocket();
-    } else if (attempts >= maxAttempts) {
-      clearInterval(poll);
-      console.error(`${MODULE_ID} | socketlib never became available. Is the socketlib module enabled?`);
-    }
-  }, 200);
-}
+  // Normal path: socketlib fires this hook once it's ready.
+  Hooks.once("socketlib.ready", registerSocket);
+
+  // Fallback path: if socketlib.ready already fired before this script
+  // finished loading (a real race condition on some setups, especially
+  // with CDN-served assets like Forge), poll for the global until it
+  // shows up, then register directly instead of waiting on a hook that
+  // already fired.
+  if (typeof socketlib !== "undefined") {
+    registerSocket();
+  } else {
+    let attempts = 0;
+    const maxAttempts = 50; // ~10 seconds at 200ms
+    const poll = setInterval(() => {
+      attempts++;
+      if (typeof socketlib !== "undefined") {
+        clearInterval(poll);
+        registerSocket();
+      } else if (attempts >= maxAttempts) {
+        clearInterval(poll);
+        console.error(`${MODULE_ID} | socketlib never became available. Is the socketlib module enabled?`);
+      }
+    }, 200);
+  }
+});
 
 /**
  * Executed on every client (including the GM's own) when a pan
@@ -74,6 +84,10 @@ async function waitForPanSocket(timeoutMs = 3000) {
 async function panAllTo(x, y, scale) {
   if (!game.user.isGM) {
     ui.notifications.warn("Only the GM can pan all players.");
+    return;
+  }
+  if (!isEnabled()) {
+    ui.notifications.warn(`${MODULE_DISPLAY_NAME}: Pan Players is disabled in Configure Settings.`);
     return;
   }
   const socket = await waitForPanSocket();
@@ -123,6 +137,7 @@ function panAllByClick() {
 // Expose a small API on the global game object so macros can call it,
 // e.g. game.modules.get("smibosuite").api.panAllToToken()
 Hooks.once("ready", () => {
+  if (!isEnabled()) return;
   const mod = game.modules.get(MODULE_ID);
   mod.api = Object.assign(mod.api ?? {}, { panAllTo, panAllToToken, panAllByClick });
 });
@@ -130,7 +145,7 @@ Hooks.once("ready", () => {
 // Optional: add a scene control button for one-click GM access
 // v13 changed controls/tools from arrays to keyed objects.
 Hooks.on("getSceneControlButtons", (controls) => {
-  if (!game.user.isGM) return;
+  if (!game.user.isGM || !isEnabled()) return;
 
   const tokenControls = foundry.utils.isNewerVersion(game.version, "13.0.0")
     ? controls.tokens ?? controls.token

@@ -2,7 +2,7 @@
   "id": "smibosuite",
   "title": "SmiboSuite",
   "description": "A small suite of Foundry VTT quality-of-life tools: type in initiative by hand in the Combat Tracker, show a large zoom-independent ruler distance readout, and pan every player's camera to a spot.",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "socket": true,
   "authors": [
     {
@@ -25,6 +25,7 @@
     ]
   },
   "esmodules": [
+    "scripts/settings.js",
     "scripts/initiative-editor.js",
     "scripts/ruler-readout.js",
     "scripts/pan-players.js"

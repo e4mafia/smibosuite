@@ -10,6 +10,7 @@
  * Ruler class, so it works for both the measure tool and token drag rulers.
  */
 
+const MODULE_ID = "smibosuite";
 const READOUT_ID = "smibosuite-ruler-readout";
 const MEASUREMENT_SELECTOR = "#hud #measurement";
 
@@ -46,6 +47,7 @@ function update() {
 }
 
 function attach() {
+  if (!game.settings.get(MODULE_ID, "enableRulerReadout")) return;
   const measurement = document.querySelector(MEASUREMENT_SELECTOR);
   if (!measurement || measurement === observed) return;
   observer?.disconnect();

@@ -1,4 +1,4 @@
-# Smibosuite
+# SmiboSuite
 
 A small suite of Foundry VTT (v13+) quality-of-life tools:
 
@@ -18,7 +18,7 @@ A small suite of Foundry VTT (v13+) quality-of-life tools:
 1. In Foundry, go to **Add-on Modules → Install Module**.
 2. Paste this into the Manifest URL field:
    `https://raw.githubusercontent.com/e4mafia/smibosuite/main/module.json`
-3. Click **Install**, then enable **Smibosuite** in your World's
+3. Click **Install**, then enable **SmiboSuite** in your World's
    **Manage Modules** settings.
 
 ### Option B — manual install
@@ -28,7 +28,7 @@ A small suite of Foundry VTT (v13+) quality-of-life tools:
    (it must contain `module.json` directly inside that folder).
 2. Restart Foundry (or reload the Setup page) so it picks up the new module.
 3. In your World, go to **Settings → Manage Modules**, enable
-   **Smibosuite**, and save.
+   **SmiboSuite**, and save.
 
 ## Publishing this to your own GitHub (e4mafia)
 

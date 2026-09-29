@@ -12,6 +12,7 @@
  */
 
 const MODULE_ID = "smibosuite";
+const MODULE_DISPLAY_NAME = "SmiboSuite";
 
 let panSocket;
 
@@ -77,7 +78,7 @@ async function panAllTo(x, y, scale) {
   }
   const socket = await waitForPanSocket();
   if (!socket) {
-    ui.notifications.error(`${MODULE_ID}: socketlib not ready. Check that the socketlib module is enabled.`);
+    ui.notifications.error(`${MODULE_DISPLAY_NAME}: socketlib not ready. Check that the socketlib module is enabled.`);
     return;
   }
   // Default to the GM's current zoom so players land on the same view,

@@ -7,9 +7,9 @@ A small suite of Foundry VTT (v13+) quality-of-life tools:
 - **Ruler Readout** — shows the ruler's distance in a large, fixed-size
   readout that doesn't shrink when you zoom out, unlike core's label.
 - **Pan Players** — lets the GM pan every connected player's camera to a
-  chosen point, token, or clicked location, with zero action required from
-  players. Requires the [socketlib](https://foundryvtt.com/packages/socketlib)
-  module.
+  chosen point, token, or clicked location — and matches the GM's current
+  zoom level too — with zero action required from players. Requires the
+  [socketlib](https://foundryvtt.com/packages/socketlib) module.
 
 ## Installation
 
@@ -76,9 +76,11 @@ it's always available with zero extra steps.
 - Requires the [socketlib](https://foundryvtt.com/packages/socketlib)
   module to also be installed and enabled — it's on the official Foundry
   package list.
+- Every pan also sets players' zoom to match the GM's current zoom, unless
+  an explicit `scale` is passed.
 - **Scene control button** — a crosshair icon appears in the token
   controls toolbar. Click it, then click anywhere on the canvas to pan
-  every player there.
+  every player there (at your current zoom).
 - **Macro — pan to a token** (uses your currently selected token if none
   is passed):
   ```js
@@ -88,7 +90,8 @@ it's always available with zero extra steps.
   ```js
   game.modules.get("smibosuite").api.panAllByClick();
   ```
-- **Macro — pan to exact coordinates** (`x`, `y`, optional `scale`):
+- **Macro — pan to exact coordinates** (`x`, `y`, optional `scale` to
+  override the default of matching your current zoom):
   ```js
   game.modules.get("smibosuite").api.panAllTo(1200, 800, 1);
   ```

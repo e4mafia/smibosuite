@@ -80,8 +80,9 @@ async function panAllTo(x, y, scale) {
     ui.notifications.error(`${MODULE_ID}: socketlib not ready. Check that the socketlib module is enabled.`);
     return;
   }
-  const data = { x, y };
-  if (typeof scale === "number") data.scale = scale;
+  // Default to the GM's current zoom so players land on the same view,
+  // not just the same point. Pass an explicit scale to override this.
+  const data = { x, y, scale: scale ?? canvas.stage.scale.x };
   await socket.executeForEveryone("panTo", data);
 }
 

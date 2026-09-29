@@ -1,8 +1,9 @@
 {
   "id": "smibosuite",
   "title": "Smibosuite",
-  "description": "A small suite of Foundry VTT quality-of-life tools: type in initiative by hand in the Combat Tracker, and show a large, zoom-independent ruler distance readout.",
-  "version": "1.1.0",
+  "description": "A small suite of Foundry VTT quality-of-life tools: type in initiative by hand in the Combat Tracker, show a large zoom-independent ruler distance readout, and pan every player's camera to a spot.",
+  "version": "1.2.0",
+  "socket": true,
   "authors": [
     {
       "name": "Custom"
@@ -12,9 +13,21 @@
     "minimum": "13",
     "verified": "13"
   },
+  "relationships": {
+    "requires": [
+      {
+        "id": "socketlib",
+        "type": "module",
+        "compatibility": {
+          "minimum": "1.0.0"
+        }
+      }
+    ]
+  },
   "esmodules": [
     "scripts/initiative-editor.js",
-    "scripts/ruler-readout.js"
+    "scripts/ruler-readout.js",
+    "scripts/pan-players.js"
   ],
   "styles": [
     "styles/smibosuite.css"

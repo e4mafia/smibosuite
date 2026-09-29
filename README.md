@@ -6,6 +6,10 @@ A small suite of Foundry VTT (v13+) quality-of-life tools:
   the Combat Tracker to type in a new number by hand.
 - **Ruler Readout** — shows the ruler's distance in a large, fixed-size
   readout that doesn't shrink when you zoom out, unlike core's label.
+- **Pan Players** — lets the GM pan every connected player's camera to a
+  chosen point, token, or clicked location, with zero action required from
+  players. Requires the [socketlib](https://foundryvtt.com/packages/socketlib)
+  module.
 
 ## Installation
 
@@ -66,6 +70,28 @@ it's always available with zero extra steps.
 - A large, fixed-size readout of the total distance appears at the top of
   the screen, staying readable no matter how far you're zoomed out. Core's
   own (zoom-scaled) label is left untouched.
+
+### Pan Players
+
+- Requires the [socketlib](https://foundryvtt.com/packages/socketlib)
+  module to also be installed and enabled — it's on the official Foundry
+  package list.
+- **Scene control button** — a crosshair icon appears in the token
+  controls toolbar. Click it, then click anywhere on the canvas to pan
+  every player there.
+- **Macro — pan to a token** (uses your currently selected token if none
+  is passed):
+  ```js
+  game.modules.get("smibosuite").api.panAllToToken();
+  ```
+- **Macro — pan to a click:**
+  ```js
+  game.modules.get("smibosuite").api.panAllByClick();
+  ```
+- **Macro — pan to exact coordinates** (`x`, `y`, optional `scale`):
+  ```js
+  game.modules.get("smibosuite").api.panAllTo(1200, 800, 1);
+  ```
 
 ## Notes
 
